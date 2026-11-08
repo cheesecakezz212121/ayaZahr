@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المنصة التعليمية التفاعلية | جامعة الوادي الجديد</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts (Cairo & Amiri) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0b192c',
+                            royal: '#1e3e62',
+                            gold: '#d4af37',
+                            goldLight: '#f6e05e'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        amiri: ['Amiri', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+        .academic-logo {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.06));
+        }
+
+        .hero-pattern {
+            background-color: #0b192c;
+            background-image: radial-gradient(rgba(212, 175, 55, 0.12) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+
+        .glow-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glow-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(11, 25, 44, 0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- ==================== الترويسة الرسمية ==================== -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm backdrop-blur-md bg-white/95">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div class="flex items-center justify-between gap-4">
+                
+                <!-- اليمين: شعار الجامعة -->
+                <div class="flex items-center gap-3 w-1/4 justify-start">
+                    <div class="flex items-center justify-center">
+                        <img src="images/university-logo.png" 
+                             alt="جامعة الوادي الجديد" 
+                             class="academic-logo"
+                             onerror="this.style.display='none'; document.getElementById('uni-fallback-home').classList.remove('hidden');">
+                        <div id="uni-fallback-home" class="hidden w-14 h-14 rounded-2xl bg-slate-900 text-amber-400 flex flex-col items-center justify-center shadow-md border border-amber-400/30">
+                            <i class="fa-solid fa-building-columns text-2xl"></i>
+                            <span class="text-[9px] font-bold mt-1">جامعة الوادي</span>
+                        </div>
+                    </div>
+                    <div class="hidden xl:block text-right border-r-2 border-slate-200 pr-3">
+                        <span class="block text-xs font-bold text-slate-400">جمهورية مصر العربية</span>
+                        <span class="block text-sm font-black text-slate-800">جامعة الوادي الجديد</span>
+                    </div>
+                </div>
+
+                <!-- المنتصف: بيانات الماجستير والكلية -->
+                <div class="text-center flex-1 max-w-2xl px-2">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-[11px] font-bold bg-amber-50 text-amber-900 border border-amber-200/70 mb-1">
+                        <i class="fa-solid fa-award text-amber-600"></i> دراسات عليا • ماجستير تكنولوجيا التعليم
+                    </span>
+                    <h1 class="text-base sm:text-xl font-black text-brand-navy tracking-tight">
+                        منصة التعلم الإلكتروني القائمة على الألعاب التفاعلية
+                    </h1>
+                    <p class="text-[12px] sm:text-xs text-slate-500 font-medium">
+                        كلية التربية • قسم المناهج وطرق التدريس وتكنولوجيا التعليم
+                    </p>
+                </div>
+
+                <!-- الشمال: شعار كلية التربية -->
+                <div class="flex items-center gap-3 w-1/4 justify-end">
+                    <div class="hidden xl:block text-left border-l-2 border-slate-200 pl-3">
+                        <span class="block text-xs font-bold text-slate-400">Faculty of Education</span>
+                        <span class="block text-sm font-black text-slate-800">كلية التربية</span>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <img src="images/faculty-logo.png" 
+                             alt="كلية التربية" 
+                             class="academic-logo"
+                             onerror="this.style.display='none'; document.getElementById('faculty-fallback-home').classList.remove('hidden');">
+                        <div id="faculty-fallback-home" class="hidden w-14 h-14 rounded-2xl bg-brand-royal text-amber-400 flex flex-col items-center justify-center shadow-md border border-amber-400/30">
+                            <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                            <span class="text-[9px] font-bold mt-1">كلية التربية</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== المحتوى الرئيسي ==================== -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+
+        <!-- بطاقة الرسالة والباحثة -->
+        <section class="relative rounded-3xl overflow-hidden shadow-2xl hero-pattern text-white border border-slate-700/50 p-6 sm:p-10">
+            <div class="max-w-4xl mx-auto text-center space-y-6">
+                <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-amber-300 text-xs font-bold">
+                    <i class="fa-solid fa-flask-vial"></i> بيئة تعلم رقمية قائمة على استراتيجيات التحفيز والألعاب التعليمية
+                </span>
+
+                <h2 class="text-2xl sm:text-3xl font-black leading-snug sm:leading-tight">
+                    فاعلية بيئة تعلم إلكترونية قائمة على الألعاب التفاعلية في تنمية المفاهيم النحوية
+                </h2>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 max-w-3xl mx-auto">
+                    <!-- الباحثة -->
+                    <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4 rounded-2xl flex items-center gap-4 text-right">
+                        <div class="w-12 h-12 rounded-xl bg-amber-400 text-slate-900 flex items-center justify-center text-xl font-black shadow-md">
+                            <i class="fa-solid fa-user-graduate"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-300 block font-semibold">إعداد الباحثة:</span>
+                            <span class="text-base font-bold text-white">[ ................................................ ]</span>
+                        </div>
+                    </div>
+
+                    <!-- المشرف -->
+                    <div class="bg-white/10 backdrop-blur-md border border-white/15 p-4 rounded-2xl flex items-center gap-4 text-right">
+                        <div class="w-12 h-12 rounded-xl bg-slate-800 text-amber-400 border border-amber-400/30 flex items-center justify-center text-xl font-black shadow-md">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-slate-300 block font-semibold">إشراف وتوجيه:</span>
+                            <span class="text-base font-bold text-white">أ.د / [ ................................................ ]</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== شبكة الدروس التعليمية ==================== -->
+     <!-- شبكة الدروس الخمسة -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+    <!-- الدرس الأول -->
+    <div class="bg-white rounded-3xl p-6 border-2 border-brand-royal shadow-sm glow-hover flex flex-col justify-between">
+        <div>
+            <div class="flex justify-between items-center mb-4">
+                <span class="w-12 h-12 rounded-2xl bg-brand-royal text-white flex items-center justify-center text-xl font-black">01</span>
+                <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-3 py-1 rounded-full">مكتمل</span>
+            </div>
+            <span class="text-xs font-bold text-amber-600 block mb-1">الوحدة الأولى</span>
+            <h4 class="text-lg font-black text-brand-navy">الفعل اللازم والفعل المتعدي</h4>
+            <p class="text-xs text-slate-500 mt-2">شرح اللزوم والتعدي، لعبة عداء القواعد، فرز الأفعال، واختبار مقنن.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100">
+            <a href="lesson1.html" class="w-full py-3 bg-brand-royal hover:bg-brand-navy text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2">دخول الدرس الأول <i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+    </div>
+
+    <!-- الدرس الثاني -->
+    <div class="bg-white rounded-3xl p-6 border-2 border-brand-royal shadow-sm glow-hover flex flex-col justify-between">
+        <div>
+            <div class="flex justify-between items-center mb-4">
+                <span class="w-12 h-12 rounded-2xl bg-brand-royal text-white flex items-center justify-center text-xl font-black">02</span>
+                <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-3 py-1 rounded-full">مكتمل</span>
+            </div>
+            <span class="text-xs font-bold text-amber-600 block mb-1">الوحدة الثانية</span>
+            <h4 class="text-lg font-black text-brand-navy">الفعل المجرد والفعل المزيد</h4>
+            <p class="text-xs text-slate-500 mt-2">المجرد والمزيد الثلاثي والرباعي، قناص حروف الزيادة، وميزان الصرف.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100">
+            <a href="lesson2.html" class="w-full py-3 bg-brand-royal hover:bg-brand-navy text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2">دخول الدرس الثاني <i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+    </div>
+
+    <!-- الدرس الثالث -->
+    <div class="bg-white rounded-3xl p-6 border-2 border-brand-royal shadow-sm glow-hover flex flex-col justify-between">
+        <div>
+            <div class="flex justify-between items-center mb-4">
+                <span class="w-12 h-12 rounded-2xl bg-brand-royal text-white flex items-center justify-center text-xl font-black">03</span>
+                <span class="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-3 py-1 rounded-full">مكتمل</span>
+            </div>
+            <span class="text-xs font-bold text-amber-600 block mb-1">الوحدة الثالثة</span>
+            <h4 class="text-lg font-black text-brand-navy">المبني للمعلوم والمبني للمجهول</h4>
+            <p class="text-xs text-slate-500 mt-2">صياغة الماضي والمضارع للمجهول، إعراب نائب الفاعل، ولعبة المحقق النحوي.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100">
+            <a href="lesson3.html" class="w-full py-3 bg-brand-royal hover:bg-brand-navy text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2">دخول الدرس الثالث <i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+    </div>
+
+    <!-- الدرس الرابع -->
+    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+            <div class="flex justify-between items-center mb-4">
+                <span class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-500 flex items-center justify-center text-xl font-black">04</span>
+                <span class="bg-slate-100 text-slate-500 text-[11px] font-bold px-3 py-1 rounded-full">الدرس القادم</span>
+            </div>
+            <span class="text-xs font-bold text-slate-400 block mb-1">الوحدة الرابعة</span>
+            <h4 class="text-lg font-black text-slate-800">الأفعال التي تنصب مفعولين</h4>
+            <p class="text-xs text-slate-400 mt-2">ظن وأخواتها وأفعال المنح والمنع مع أنشطة إعرابية متقدمة.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100">
+            <a href="lesson4.html" class="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs rounded-xl flex items-center justify-center gap-2">دخول الدرس الرابع <i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+    </div>
+
+    <!-- الدرس الخامس -->
+    <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+            <div class="flex justify-between items-center mb-4">
+                <span class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-500 flex items-center justify-center text-xl font-black">05</span>
+                <span class="bg-slate-100 text-slate-500 text-[11px] font-bold px-3 py-1 rounded-full">الدرس القادم</span>
+            </div>
+            <span class="text-xs font-bold text-slate-400 block mb-1">الوحدة الخامسة</span>
+            <h4 class="text-lg font-black text-slate-800">أسلوب الشرط</h4>
+            <p class="text-xs text-slate-400 mt-2">أركان أسلوب الشرط، الأدوات الجازمة، وعلامات جزم فعلي الشرط والجواب.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100">
+            <a href="lesson5.html" class="w-full py-3 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-xs rounded-xl flex items-center justify-center gap-2">دخول الدرس الخامس <i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+    </div>
+
+</div>
+
+    </main>
+
+    <!-- التذييل الأكاديمي -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-400 mt-auto">
+        جامعة الوادي الجديد • كلية التربية • مشروع رسالة الماجستير في تكنولوجيا التعليم والتعلم الرقمي
+    </footer>
+
+</body>
+</html>

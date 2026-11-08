@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدرس الرابع: الأفعال التي تنصب مفعولين | المنصة التعليمية</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0b192c',
+                            royal: '#1e3e62',
+                            gold: '#d4af37'
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Cairo', sans-serif; background: #f8fafc; color: #1e293b; }
+        .academic-logo { width: 55px; height: 55px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.06)); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- HEADER -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm backdrop-blur-md bg-white/95">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
+            <div class="flex items-center justify-between gap-4">
+                
+                <div class="flex items-center gap-3 w-1/4 justify-start">
+                    <a href="index.html" title="الرجوع للرئيسية" class="p-2.5 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-100 hover:text-brand-royal transition-all flex items-center gap-1.5 text-xs font-bold">
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <span class="hidden sm:inline">الرئيسية</span>
+                    </a>
+                    
+                    <div class="hidden md:flex items-center justify-center">
+                        <img src="images/university-logo.png" alt="جامعة الوادي الجديد" class="academic-logo" onerror="this.style.display='none'; document.getElementById('uni-fallback-l4').classList.remove('hidden');">
+                        <div id="uni-fallback-l4" class="hidden w-11 h-11 rounded-xl bg-slate-900 text-amber-400 flex items-center justify-center text-lg border border-amber-400/30">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center flex-1 max-w-xl">
+                    <span class="text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 border border-amber-200">
+                        الوحدة الرابعة • التعدي والمفاعيل
+                    </span>
+                    <h1 class="text-sm sm:text-base font-black text-brand-navy truncate mt-0.5">
+                        الدرس الرابع: الأفعال التي تنصب مفعولين
+                    </h1>
+                </div>
+
+                <div class="flex items-center gap-3 w-1/4 justify-end">
+                    <div class="hidden lg:flex items-center gap-2 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-xl text-xs font-bold text-slate-700">
+                        <i class="fa-solid fa-user-graduate text-amber-600"></i>
+                        <span>بيئة التعلم التفاعلية</span>
+                    </div>
+
+                    <div class="flex items-center justify-center">
+                        <img src="images/faculty-logo.png" alt="كلية التربية" class="academic-logo" onerror="this.style.display='none'; document.getElementById('faculty-fallback-l4').classList.remove('hidden');">
+                        <div id="faculty-fallback-l4" class="hidden w-11 h-11 rounded-xl bg-brand-royal text-amber-400 flex items-center justify-center text-lg border border-amber-400/30">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- مساحة المحتوى -->
+    <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6 flex-1 flex flex-col lg:flex-row gap-6">
+
+        <!-- Sidebar -->
+        <aside class="w-full lg:w-80 flex-shrink-0 space-y-4">
+            
+            <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-xs">
+                <div class="flex items-center justify-between text-xs font-bold text-slate-700 mb-2">
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-chart-line text-emerald-600"></i> تقدمك في الدرس</span>
+                    <span id="progressText" class="text-emerald-700 font-extrabold">20%</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+                    <div id="progressBar" class="bg-gradient-to-r from-emerald-500 to-teal-500 h-2.5 rounded-full transition-all duration-500" style="width: 20%;"></div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-3 border border-slate-200 shadow-xs space-y-1.5">
+                <p class="text-[11px] font-bold text-slate-400 px-3 py-1">محطات الدرس الرابع:</p>
+
+                <button onclick="switchStation('learn')" id="btn-learn" class="station-btn w-full flex items-center justify-between p-3 rounded-xl bg-indigo-50/80 border border-indigo-200 text-indigo-950 font-bold text-xs">
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-xs"><i class="fa-solid fa-play"></i></span>
+                        <div class="text-right">
+                            <span class="block">1. المحاضرة والقواعد</span>
+                            <span class="text-[10px] text-slate-400 font-normal">ظن وأخواتها + أفعال المنح</span>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-circle-check text-emerald-600 text-sm"></i>
+                </button>
+
+                <button onclick="switchStation('game1')" id="btn-game1" class="station-btn w-full flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 border border-transparent text-slate-700 font-bold text-xs">
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-amber-500 text-slate-900 flex items-center justify-center text-xs"><i class="fa-solid fa-crosshairs"></i></span>
+                        <div class="text-right">
+                            <span class="block">2. قنّاص المفعولين</span>
+                            <span class="text-[10px] text-slate-400 font-normal">استخرج (مفعول 1) و (مفعول 2)</span>
+                        </div>
+                    </div>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">لعبة 1</span>
+                </button>
+
+                <button onclick="switchStation('game2')" id="btn-game2" class="station-btn w-full flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 border border-transparent text-slate-700 font-bold text-xs">
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-teal-600 text-white flex items-center justify-center text-xs"><i class="fa-solid fa-tags"></i></span>
+                        <div class="text-right">
+                            <span class="block">3. تصنيف معاني الأفعال</span>
+                            <span class="text-[10px] text-slate-400 font-normal">رجحان / يقين / تحويل / عطاء</span>
+                        </div>
+                    </div>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-teal-100 text-teal-800">لعبة 2</span>
+                </button>
+
+                <button onclick="switchStation('lab')" id="btn-lab" class="station-btn w-full flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 border border-transparent text-slate-700 font-bold text-xs">
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center text-xs"><i class="fa-solid fa-flask-vial"></i></span>
+                        <div class="text-right">
+                            <span class="block">4. مختبر فحص الأصل</span>
+                            <span class="text-[10px] text-slate-400 font-normal">أصلهما أم ليس أصلهما مبتدأ وخبر</span>
+                        </div>
+                    </div>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-blue-100 text-blue-800">تفاعلي</span>
+                </button>
+
+                <button onclick="switchStation('exam')" id="btn-exam" class="station-btn w-full flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 border border-transparent text-slate-700 font-bold text-xs">
+                    <div class="flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-lg bg-rose-600 text-white flex items-center justify-center text-xs"><i class="fa-solid fa-file-circle-check"></i></span>
+                        <div class="text-right">
+                            <span class="block">5. الاختبار المقنن للدرس</span>
+                            <span class="text-[10px] text-slate-400 font-normal">قياس الأثر والتقويم</span>
+                        </div>
+                    </div>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-rose-100 text-rose-800">تقييم</span>
+                </button>
+            </div>
+
+            <div class="bg-amber-50/80 border border-amber-200/90 rounded-2xl p-4 text-xs space-y-2">
+                <div class="flex items-center gap-2 font-black text-amber-900">
+                    <i class="fa-solid fa-lightbulb text-amber-600"></i> خلاصة تقسيم الأفعال:
+                </div>
+                <p class="text-amber-950 leading-relaxed text-[11px]">
+                    <strong>أصلهما مبتدأ وخبر (ظن وأخواتها):</strong><br>
+                    • الرجحان: (ظَنَّ، حَسِبَ، زَعَمَ، خَالَ)<br>
+                    • اليقين: (رَأَى، عَلِمَ، وَجَدَ)<br>
+                    • التحويل: (جَعَلَ، صَيَّرَ، حَوَّلَ)<br>
+                    <strong>ليس أصلهما مبتدأ وخبر (المنح والمنع):</strong><br>
+                    (أَعْطَى، مَنَحَ، وَهَبَ، كَسَا، أَلْبَسَ، مَنَعَ).
+                </p>
+            </div>
+
+        </aside>
+
+        <!-- Main Canvas -->
+        <main class="flex-1 min-w-0">
+
+            <!-- المحطة 1: الشرح وقواعد الدرس -->
+            <section id="station-learn" class="station-view space-y-6">
+                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs">
+                    <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+                        <h2 class="text-base sm:text-lg font-black text-slate-900 flex items-center gap-2">
+                            <i class="fa-solid fa-circle-play text-rose-600"></i> المحاضرة المرئية: الأفعال المتعدية لمفعولين
+                        </h2>
+                        <span class="text-xs bg-slate-100 px-3 py-1 rounded-full text-slate-600 font-semibold">فيديو تعليمي مخصص</span>
+                    </div>
+
+                    <div class="w-full aspect-video bg-slate-950 rounded-2xl overflow-hidden shadow-inner flex items-center justify-center relative">
+                        <video class="w-full h-full object-contain" controls poster="images/video-cover.png">
+                            <source src="videos/lesson4.mp4" type="video/mp4">
+                            <p class="text-white text-xs p-4 text-center">ضع ملف الفيديو في المجلد: <code>videos/lesson4.mp4</code></p>
+                        </video>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <!-- القسم الأول: أصلهما المبتدأ والخبر (يمين) -->
+                    <div class="bg-white border-2 border-emerald-500/20 rounded-3xl p-6 shadow-xs relative overflow-hidden">
+                        <div class="w-1.5 h-full bg-emerald-500 absolute top-0 right-0"></div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-emerald-50 text-emerald-800 rounded-full text-xs font-black">القسم الأول</span>
+                            <i class="fa-solid fa-arrows-split-up-and-left text-emerald-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-black text-slate-900 mb-2">أصلهما المبتدأ والخبر</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            إذا حذفت الفعل والفاعل، تبقت لك جملة اسمية تامة المعنى من مبتدأ وخبر:
+                        </p>
+                        <div class="space-y-2 bg-slate-50 p-3.5 rounded-2xl text-xs border border-slate-100">
+                            <div><strong>أفعال الرجحان:</strong> «<strong>ظَنَنْتُ</strong> <u>الصَّدِيقَ</u> <u>أَخًا</u>» (الأصل: الصديقُ أخٌ).</div>
+                            <div><strong>أفعال اليقين:</strong> «<strong>رَأَيْتُ</strong> <u>العِلْمَ</u> <u>نُورًا</u>» (رأى القلبية).</div>
+                            <div><strong>أفعال التحويل:</strong> «<strong>جَعَلَ</strong> النَّجَّارُ <u>الخَشَبَ</u> <u>بَابًا</u>».</div>
+                        </div>
+                    </div>
+
+                    <!-- القسم الثاني: ليس أصلهما المبتدأ والخبر (يسار) -->
+                    <div class="bg-white border-2 border-indigo-500/20 rounded-3xl p-6 shadow-xs relative overflow-hidden">
+                        <div class="w-1.5 h-full bg-indigo-500 absolute top-0 right-0"></div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="px-3 py-1 bg-indigo-50 text-indigo-800 rounded-full text-xs font-black">القسم الثاني</span>
+                            <i class="fa-solid fa-hand-holding-heart text-indigo-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-black text-slate-900 mb-2">ليس أصلهما المبتدأ والخبر</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            إذا حذفت الفعل والفاعل، لا يتكون من المفعولين جملة مفيدة أو معنى مستقل:
+                        </p>
+                        <div class="space-y-2 bg-slate-50 p-3.5 rounded-2xl text-xs border border-slate-100">
+                            <div><strong>العطاء والمنح:</strong> «<strong>أَعْطَى</strong> الغَنِيُّ <u>الفَقِيرَ</u> <u>مَالاً</u>».</div>
+                            <p class="text-[11px] text-slate-500 mt-1">إذا حذفت (أعطى الغنيُّ) يتبقى (الفقيرُ مالٌ) وهو تركيب لا يفيد جملة اسمية صحيحة.</p>
+                            <div><strong>الكسوة:</strong> «<strong>كَسَا</strong> الرَّبِيعُ <u>الأَرْضَ</u> <u>خُضْرَةً</u>».</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-end">
+                    <button onclick="switchStation('game1')" class="px-6 py-3 bg-brand-royal hover:bg-brand-navy text-white text-xs font-black rounded-xl shadow-md flex items-center gap-2">
+                        <span>الانتقال للعبة قنّاص المفعولين</span>
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- المحطة 2: لعبة قناص المفعولين -->
+            <section id="station-game1" class="station-view hidden space-y-4">
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs max-w-2xl mx-auto text-center space-y-6">
+                    <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                        <div>
+                            <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs font-bold">لعبة الصيد النحوي</span>
+                            <h2 class="text-xl font-black text-brand-navy mt-1">قنّاص المفعولين (1 و 2)</h2>
+                            <p class="text-xs text-slate-500">انقر على المفعول به الأول ثم المفعول به الثاني بالترتيب</p>
+                        </div>
+                        <div class="bg-amber-50 px-4 py-2 rounded-2xl border border-amber-200">
+                            <span class="text-[10px] text-amber-700 font-bold block">النقاط</span>
+                            <span id="targetScore" class="text-2xl font-black text-amber-900">0</span>
+                        </div>
+                    </div>
+
+                    <div id="targetGamePlay" class="space-y-6">
+                        <div class="bg-amber-50/60 p-6 rounded-3xl border-2 border-amber-200/80">
+                            <span class="text-xs text-amber-800 font-bold block mb-1" id="targetStep">المرحلة 1 من 4:</span>
+                            <h3 class="text-2xl sm:text-3xl font-black text-slate-800 my-2" id="targetSentence">مَنَحَ المُعَلِّمُ الطَّالِبَ جَائِزَةً</h3>
+                            <div class="flex justify-center gap-3 text-xs mt-3">
+                                <span class="px-3 py-1 bg-white rounded-lg border text-slate-600" id="badgeM1">مفعول 1: لم يُحدد بعد</span>
+                                <span class="px-3 py-1 bg-white rounded-lg border text-slate-600" id="badgeM2">مفعول 2: لم يُحدد بعد</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap justify-center gap-3" id="wordsContainer"></div>
+                        <div id="targetFeedback" class="text-xs font-bold h-6"></div>
+                    </div>
+
+                    <div id="targetWinModal" class="hidden py-8 space-y-4">
+                        <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-3xl">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-slate-900">قناص ممتاز لكل المفاعيل!</h3>
+                        <p class="text-xs text-slate-500">استطعت تحديد المفعولين الأول والثاني في كافة أنماط الجمل بدقة متناهية.</p>
+                        <button onclick="resetTargetGame()" class="px-6 py-2.5 bg-brand-royal text-white rounded-xl text-xs font-bold">إعادة التحدي</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- المحطة 3: لعبة تصنيف معاني الأفعال -->
+            <section id="station-game2" class="station-view hidden space-y-6">
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs">
+                    <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
+                        <div>
+                            <h2 class="text-lg font-black text-slate-900">تحدي فرز دلالات الأفعال</h2>
+                            <p class="text-xs text-slate-500">صنّف معنى الفعل المتعدي لمفعولين المعروض أمامك</p>
+                        </div>
+                        <div class="bg-teal-50 px-4 py-2 rounded-2xl border border-teal-100">
+                            <span class="text-[10px] text-teal-700 font-bold block">رصيد الفرز</span>
+                            <span id="meaningScore" class="text-2xl font-black text-teal-900">0</span>
+                        </div>
+                    </div>
+
+                    <div id="meaningGamePlay" class="max-w-md mx-auto text-center space-y-6">
+                        <div class="bg-slate-50 border-2 border-teal-200 rounded-3xl p-6 shadow-sm">
+                            <span class="text-xs text-teal-700 font-bold block mb-1">ما الدلالة المعنوية للفعل في الجملة؟</span>
+                            <h3 id="meaningVerb" class="text-3xl font-black text-brand-navy my-2">عَلِمْتُ الصِّدْقَ مُنْجِيًا</h3>
+                            <p id="meaningHint" class="text-xs text-slate-500">الفعل المستهدف: (عَلِمَ)</p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <button onclick="checkMeaningAnswer('يقين')" class="p-4 rounded-2xl border-2 border-teal-400 bg-teal-50 hover:bg-teal-100 text-teal-950 font-black text-sm">أفعال اليقين</button>
+                            <button onclick="checkMeaningAnswer('رجحان')" class="p-4 rounded-2xl border-2 border-emerald-400 bg-emerald-50 hover:bg-emerald-100 text-emerald-950 font-black text-sm">أفعال الرجحان والظن</button>
+                            <button onclick="checkMeaningAnswer('تحويل')" class="p-4 rounded-2xl border-2 border-indigo-400 bg-indigo-50 hover:bg-indigo-100 text-indigo-950 font-black text-sm">أفعال التحويل والصيرورة</button>
+                            <button onclick="checkMeaningAnswer('عطاء')" class="p-4 rounded-2xl border-2 border-purple-400 bg-purple-50 hover:bg-purple-100 text-purple-950 font-black text-sm">أفعال المنح والكسوة</button>
+                        </div>
+
+                        <div id="meaningFeedback" class="text-xs font-bold h-6"></div>
+                    </div>
+
+                    <div id="meaningGameOver" class="hidden text-center py-10 space-y-4">
+                        <div class="w-16 h-16 bg-teal-100 text-teal-700 rounded-full flex items-center justify-center mx-auto text-3xl">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-slate-900">رائع! صنفت دلالات الأفعال كلها بنجاح</h3>
+                        <p class="text-xs text-slate-500">أتقنت التمييز بين أفعال اليقين والرجحان والتحويل وأفعال العطاء والمنع.</p>
+                        <button onclick="resetMeaningGame()" class="px-6 py-2.5 bg-brand-royal text-white rounded-xl font-bold text-xs">إعادة الفرز</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- المحطة 4: مختبر فحص الأصل -->
+            <section id="station-lab" class="station-view hidden space-y-4">
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs max-w-2xl mx-auto space-y-6">
+                    <div class="text-center pb-4 border-b border-slate-100">
+                        <span class="px-3 py-1 bg-blue-50 text-blue-800 rounded-full text-xs font-bold">المختبر النحوي التفاعلي</span>
+                        <h2 class="text-xl font-black text-slate-900 mt-1">مختبر اختبار أصل المفعولين</h2>
+                        <p class="text-xs text-slate-500">انقر على زر "حذف الفعل والفاعل" لترى هل يتبقى مبتدأ وخبر أم لا</p>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <button onclick="inspectOrigin('ظَنَنْتُ الجَوَّ بَارِدًا')" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-xl text-xs font-bold">ظَنَنْتُ الجَوَّ بَارِدًا</button>
+                        <button onclick="inspectOrigin('كَسَا اللهُ العِظَامَ لَحْمًا')" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-xl text-xs font-bold">كَسَا اللهُ العِظَامَ لَحْمًا</button>
+                        <button onclick="inspectOrigin('جَعَلَ الصَّانِعُ الطِّينَ خَزَفًا')" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-xl text-xs font-bold">جَعَلَ الصَّانِعُ الطِّينَ خَزَفًا</button>
+                        <button onclick="inspectOrigin('وَهَبَ المُحْسِنُ المِسْكِينَ مَالاً')" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-xl text-xs font-bold">وَهَبَ المُحْسِنُ المِسْكِينَ مَالاً</button>
+                    </div>
+
+                    <div class="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-3xl text-center space-y-4">
+                        <div>
+                            <span class="text-xs text-blue-700 font-bold block mb-1">الجملة الأصلية المتعدية لمفعولين:</span>
+                            <span id="labOriginSentence" class="text-xl font-black text-slate-800">ظَنَنْتُ الجَوَّ بَارِدًا</span>
+                        </div>
+
+                        <div class="p-4 bg-white rounded-2xl border border-blue-100">
+                            <span class="text-xs text-slate-400 block mb-1">النتيجة بعد حذف (الفعل والفاعل):</span>
+                            <span id="labAfterCut" class="text-2xl font-black text-emerald-700">«الجَوُّ بَارِدٌ»</span>
+                            <span id="labVerdict" class="block text-xs font-bold text-emerald-800 mt-2 bg-emerald-50 py-1.5 px-3 rounded-lg border border-emerald-200 inline-block">
+                                جملة اسمية تامة المعنى ⬅ الفعل ينصب مفعولين (أصلهما المبتدأ والخبر).
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- المحطة 5: الاختبار المقنن كاملاً -->
+            <section id="station-exam" class="station-view hidden space-y-6">
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xs max-w-3xl mx-auto">
+                    <div class="text-center pb-6 border-b border-slate-100">
+                        <span class="px-3 py-1 bg-rose-50 text-rose-700 rounded-full text-xs font-black inline-block mb-2">التقويم البعدي للدرس</span>
+                        <h2 class="text-xl sm:text-2xl font-black text-slate-900">اختبار: الأفعال التي تنصب مفعولين</h2>
+                        <p class="text-xs text-slate-500 mt-1">أجب عن كافة الأسئلة (6 درجات) للتحقق من وصولك للكفاءة المطلوبة</p>
+                    </div>
+
+                    <form id="quizForm4" class="space-y-4 pt-4">
+                        <!-- السؤال 1 -->
+                        <div class="p-4 border border-slate-200 rounded-2xl bg-slate-50/50">
+                            <p class="font-bold text-slate-900 mb-2.5 text-sm">١. من أفعال اليقين التي تنصب مفعولين أصلهما المبتدأ والخبر:</p>
+                            <div class="space-y-2 text-xs">
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q1" value="correct" class="text-brand-royal"> رَأَى (القلبية)، عَلِمَ، وَجَدَ
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q1" value="w1" class="text-brand-royal"> ظَنَّ، حَسِبَ، زَعَمَ
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q1" value="w2" class="text-brand-royal"> أَعْطَى، مَنَحَ، وَهَبَ
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- السؤال 2 -->
+                        <div class="p-4 border border-slate-200 rounded-2xl bg-slate-50/50">
+                            <p class="font-bold text-slate-900 mb-2.5 text-sm">٢. المفعولان في جملة «جَعَلَ الخَبَّازُ العَجِينَ خُبْزًا» هما:</p>
+                            <div class="space-y-2 text-xs">
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q2" value="w1" class="text-brand-royal"> الخباز، العجين
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q2" value="correct" class="text-brand-royal"> العَجِينَ (مفعول 1)، خُبْزًا (مفعول 2)
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q2" value="w2" class="text-brand-royal"> جعل، الخباز
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- السؤال 3 -->
+                        <div class="p-4 border border-slate-200 rounded-2xl bg-slate-50/50">
+                            <p class="font-bold text-slate-900 mb-2.5 text-sm">٣. في جملة «رَأَيْتُ القَمَرَ مُضِيئًا»، كلمة (مضيئاً) تُعرب:</p>
+                            <div class="space-y-2 text-xs">
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q3" value="w1" class="text-brand-royal"> مفعولاً به ثانياً (لأن الرؤية قلبية)
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q3" value="correct" class="text-brand-royal"> حَالاً منصوبة (لأن الرؤية بصرية بالعين تنصب مفعولاً واحداً)
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q3" value="w2" class="text-brand-royal"> نعتاً منصوباً
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- السؤال 4 -->
+                        <div class="p-4 border border-slate-200 rounded-2xl bg-slate-50/50">
+                            <p class="font-bold text-slate-900 mb-2.5 text-sm">٤. الفعل في جملة «كَسَا الرَّبِيعُ الأَرْضَ جَمَالاً» ينصب مفعولين:</p>
+                            <div class="space-y-2 text-xs">
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q4" value="correct" class="text-brand-royal"> ليس أصلهما المبتدأ والخبر
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q4" value="w1" class="text-brand-royal"> أصلهما المبتدأ والخبر
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q4" value="w2" class="text-brand-royal"> لا ينصب سوى مفعول واحد
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- السؤال 5 -->
+                        <div class="p-4 border border-slate-200 rounded-2xl bg-slate-50/50">
+                            <p class="font-bold text-slate-900 mb-2.5 text-sm">٥. عند حذف الفعل والفاعل من «وَجَدْتُ الطَّالِبَيْنِ مُجْتَهِدَيْنِ» تصبح الجملة:</p>
+                            <div class="space-y-2 text-xs">
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q5" value="w1" class="text-brand-royal"> الطالبينِ مجتهدينِ
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q5" value="correct" class="text-brand-royal"> الطَّالِبَانِ مُجْتَهِدَانِ (مبتدأ وخبر مرفوعان بالألف)
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q5" value="w2" class="text-brand-royal"> الطالبانِ مجتهدينِ
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- السؤال 6 -->
+                        <div class="p-4 border border-slate-200 rounded-2xl bg-slate-50/50">
+                            <p class="font-bold text-slate-900 mb-2.5 text-sm">٦. الفعل (زَعَمَ) يفيد في المعنى:</p>
+                            <div class="space-y-2 text-xs">
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q6" value="correct" class="text-brand-royal"> الرُّجْحَان والظن
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q6" value="w1" class="text-brand-royal"> اليقين والتأكيد
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2 rounded-xl hover:bg-white cursor-pointer">
+                                    <input type="radio" name="l4_q6" value="w2" class="text-brand-royal"> التحويل والانتقال
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="button" onclick="calculateScoreL4()" class="w-full py-4 bg-brand-royal hover:bg-brand-navy text-white font-black text-sm rounded-2xl shadow-md transition-all active:scale-95 mt-4">
+                            تصحيح اختبار الدرس الرابع وعرض النتيجة <i class="fa-solid fa-square-check mr-1.5"></i>
+                        </button>
+                    </form>
+
+                    <div id="resultL4" class="mt-6 text-center font-bold text-base p-5 rounded-2xl hidden transition-all"></div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- التذييل الأكاديمي -->
+    <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-400 mt-auto">
+        جامعة الوادي الجديد • كلية التربية • مشروع رسالة الماجستير
+    </footer>
+
+    <!-- سكريبت التشغيل والتفاعل الصوتي -->
+    <script>
+        const playTone = (type) => {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'correct') {
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.2, ctx.currentTime);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.25);
+                } else if (type === 'wrong') {
+                    osc.frequency.setValueAtTime(220, ctx.currentTime);
+                    osc.frequency.setValueAtTime(164.81, ctx.currentTime + 0.1);
+                    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.3);
+                } else if (type === 'win') {
+                    osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+                    osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.12);
+                    osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.25);
+                    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.45);
+                }
+            } catch (e) {
+                console.log("Audio not supported");
+            }
+        };
+
+        const stationProgress = {
+            'learn': 20,
+            'game1': 40,
+            'game2': 60,
+            'lab': 80,
+            'exam': 100
+        };
+
+        function switchStation(stationId) {
+            document.querySelectorAll('.station-view').forEach(view => view.classList.add('hidden'));
+            document.getElementById(`station-${stationId}`).classList.remove('hidden');
+
+            document.querySelectorAll('.station-btn').forEach(btn => {
+                btn.className = 'station-btn w-full flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 border border-transparent text-slate-700 font-bold text-xs transition-all';
+            });
+            const activeBtn = document.getElementById(`btn-${stationId}`);
+            activeBtn.className = 'station-btn w-full flex items-center justify-between p-3 rounded-xl bg-indigo-50/90 border border-indigo-200 text-indigo-950 font-bold text-xs shadow-xs';
+
+            const p = stationProgress[stationId] || 20;
+            document.getElementById('progressBar').style.width = `${p}%`;
+            document.getElementById('progressText').innerText = `${p}%`;
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ================== لعبة قناص المفعولين ==================
+        const targetQuestions = [
+            {
+                s: "مَنَحَ المُعَلِّمُ الطَّالِبَ جَائِزَةً",
+                words: ["مَنَحَ", "المُعَلِّمُ", "الطَّالِبَ", "جَائِزَةً"],
+                m1: "الطَّالِبَ",
+                m2: "جَائِزَةً"
+            },
+            {
+                s: "ظَنَنْتُ النَّجَاحَ سَهْلاً",
+                words: ["ظَنَنْتُ", "النَّجَاحَ", "سَهْلاً"],
+                m1: "النَّجَاحَ",
+                m2: "سَهْلاً"
+            },
+            {
+                s: "أَعْطَى الوَالِدُ ابْنَهُ نَصِيحَةً",
+                words: ["أَعْطَى", "الوَالِدُ", "ابْنَهُ", "نَصِيحَةً"],
+                m1: "ابْنَهُ",
+                m2: "نَصِيحَةً"
+            },
+            {
+                s: "جَعَلَ الصَّانِعُ الحَدِيدَ سَيْفًا",
+                words: ["جَعَلَ", "الصَّانِعُ", "الحَدِيدَ", "سَيْفًا"],
+                m1: "الحَدِيدَ",
+                m2: "سَيْفًا"
+            }
+        ];
+
+        let targetIdx = 0, targetScore = 0, stepInTarget = 1; // 1 = seeking m1, 2 = seeking m2
+
+        function renderTargetQuestion() {
+            const q = targetQuestions[targetIdx];
+            document.getElementById('targetStep').innerText = `المرحلة ${targetIdx + 1} من ${targetQuestions.length}:`;
+            document.getElementById('targetSentence').innerText = q.s;
+            document.getElementById('badgeM1').innerText = "مفعول 1: لم يُحدد بعد";
+            document.getElementById('badgeM1').className = "px-3 py-1 bg-white rounded-lg border text-slate-600";
+            document.getElementById('badgeM2').innerText = "مفعول 2: لم يُحدد بعد";
+            document.getElementById('badgeM2').className = "px-3 py-1 bg-white rounded-lg border text-slate-600";
+            document.getElementById('targetFeedback').innerText = "";
+            stepInTarget = 1;
+
+            const box = document.getElementById('wordsContainer');
+            box.innerHTML = "";
+
+            q.words.forEach(w => {
+                const btn = document.createElement('button');
+                btn.className = "px-5 py-3 rounded-2xl bg-white border-2 border-slate-200 hover:border-amber-400 font-black text-slate-800 text-base shadow-xs transition-all active:scale-95";
+                btn.innerText = w;
+                btn.onclick = () => handleWordClick(w, btn, q);
+                box.appendChild(btn);
+            });
+        }
+
+        function handleWordClick(w, btn, q) {
+            const fb = document.getElementById('targetFeedback');
+            if (stepInTarget === 1) {
+                if (w === q.m1) {
+                    playTone('correct');
+                    btn.className = "px-5 py-3 rounded-2xl bg-amber-500 text-white font-black text-base shadow-inner scale-95 opacity-60 cursor-not-allowed";
+                    btn.disabled = true;
+                    document.getElementById('badgeM1').innerText = `مفعول 1: ${w}`;
+                    document.getElementById('badgeM1').className = "px-3 py-1 bg-amber-100 text-amber-800 font-bold rounded-lg border border-amber-300";
+                    stepInTarget = 2;
+                    fb.className = "text-xs font-bold text-amber-700";
+                    fb.innerText = "أحسنت! حددت المفعول به الأول، الآن انقر على المفعول به الثاني.";
+                } else {
+                    playTone('wrong');
+                    fb.className = "text-xs font-bold text-rose-600";
+                    fb.innerText = `كلمة (${w}) ليست المفعول به الأول، انتبه!`;
+                }
+            } else if (stepInTarget === 2) {
+                if (w === q.m2) {
+                    playTone('correct');
+                    btn.className = "px-5 py-3 rounded-2xl bg-emerald-500 text-white font-black text-base shadow-inner scale-95 opacity-60 cursor-not-allowed";
+                    btn.disabled = true;
+                    document.getElementById('badgeM2').innerText = `مفعول 2: ${w}`;
+                    document.getElementById('badgeM2').className = "px-3 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-lg border border-emerald-300";
+                    targetScore += 25;
+                    document.getElementById('targetScore').innerText = targetScore;
+                    fb.className = "text-xs font-bold text-emerald-600";
+                    fb.innerText = "صيد ممتاز! حددت المفعولين بدقة متناهية.";
+
+                    setTimeout(() => {
+                        targetIdx++;
+                        if (targetIdx < targetQuestions.length) {
+                            renderTargetQuestion();
+                        } else {
+                            playTone('win');
+                            document.getElementById('targetGamePlay').classList.add('hidden');
+                            document.getElementById('targetWinModal').classList.remove('hidden');
+                        }
+                    }, 1000);
+                } else {
+                    playTone('wrong');
+                    fb.className = "text-xs font-bold text-rose-600";
+                    fb.innerText = `كلمة (${w}) ليست المفعول به الثاني!`;
+                }
+            }
+        }
+
+        function resetTargetGame() {
+            targetIdx = 0; targetScore = 0;
+            document.getElementById('targetScore').innerText = 0;
+            document.getElementById('targetWinModal').classList.add('hidden');
+            document.getElementById('targetGamePlay').classList.remove('hidden');
+            renderTargetQuestion();
+        }
+
+        renderTargetQuestion();
+
+        // ================== لعبة تصنيف معاني الأفعال ==================
+        const meaningItems = [
+            { s: "عَلِمْتُ الصِّدْقَ مُنْجِيًا", v: "عَلِمَ", type: "يقين" },
+            { s: "حَسِبْتُ الأمْرَ سَهْلاً", v: "حَسِبَ", type: "رجحان" },
+            { s: "صَيَّرَ الخَزَّافُ الطِّينَ آنِيَةً", v: "صَيَّرَ", type: "تحويل" },
+            { s: "وَهَبَ اللهُ الإِنْسَانَ عَقْلاً", v: "وَهَبَ", type: "عطاء" },
+            { s: "رَأَيْتُ الحَقَّ وَاضِحًا", v: "رَأَى (القلبية)", type: "يقين" }
+        ];
+
+        let meaningIdx = 0, meaningScore = 0;
+
+        function checkMeaningAnswer(selected) {
+            const current = meaningItems[meaningIdx];
+            const fb = document.getElementById('meaningFeedback');
+
+            if (selected === current.type) {
+                playTone('correct');
+                meaningScore += 20;
+                document.getElementById('meaningScore').innerText = meaningScore;
+                fb.className = "text-xs font-bold text-emerald-600";
+                fb.innerText = "تصنيف دقيق في المعنى والصرف! أحسنت.";
+            } else {
+                playTone('wrong');
+                fb.className = "text-xs font-bold text-rose-500";
+                fb.innerText = "تصنيف غير صحيح لهذا الفعل.";
+            }
+
+            setTimeout(() => {
+                fb.innerText = "";
+                meaningIdx++;
+                if (meaningIdx < meaningItems.length) {
+                    document.getElementById('meaningVerb').innerText = meaningItems[meaningIdx].s;
+                    document.getElementById('meaningHint').innerText = `الفعل المستهدف: (${meaningItems[meaningIdx].v})`;
+                } else {
+                    playTone('win');
+                    document.getElementById('meaningGamePlay').classList.add('hidden');
+                    document.getElementById('meaningGameOver').classList.remove('hidden');
+                }
+            }, 700);
+        }
+
+        function resetMeaningGame() {
+            meaningIdx = 0; meaningScore = 0;
+            document.getElementById('meaningScore').innerText = 0;
+            document.getElementById('meaningVerb').innerText = meaningItems[0].s;
+            document.getElementById('meaningHint').innerText = `الفعل المستهدف: (${meaningItems[0].v})`;
+            document.getElementById('meaningGamePlay').classList.remove('hidden');
+            document.getElementById('meaningGameOver').classList.add('hidden');
+        }
+
+        // ================== مختبر فحص الأصل ==================
+        const originData = {
+            'ظَنَنْتُ الجَوَّ بَارِدًا': {
+                after: '«الجَوُّ بَارِدٌ»',
+                verdict: 'جملة اسمية تامة المعنى ⬅ الفعل (ظَنَّ) ينصب مفعولين أصلهما المبتدأ والخبر.',
+                isMubtada: true
+            },
+            'كَسَا اللهُ العِظَامَ لَحْمًا': {
+                after: '«العِظَامُ لَحْمٌ» (تركيب غير مفيد)',
+                verdict: 'لا يتكون منهما مبتدأ وخبر ⬅ الفعل (كَسَا) ينصب مفعولين ليس أصلهما المبتدأ والخبر.',
+                isMubtada: false
+            },
+            'جَعَلَ الصَّانِعُ الطِّينَ خَزَفًا': {
+                after: '«الطِّينُ خَزَفٌ»',
+                verdict: 'جملة اسمية تامة المعنى ⬅ الفعل (جَعَلَ) ينصب مفعولين أصلهما المبتدأ والخبر.',
+                isMubtada: true
+            },
+            'وَهَبَ المُحْسِنُ المِسْكِينَ مَالاً': {
+                after: '«المِسْكِينُ مَالٌ» (تركيب غير مفيد)',
+                verdict: 'لا يتكون منهما مبتدأ وخبر ⬅ الفعل (وَهَبَ) ينصب مفعولين ليس أصلهما المبتدأ والخبر.',
+                isMubtada: false
+            }
+        };
+
+        function inspectOrigin(sentence) {
+            playTone('correct');
+            const d = originData[sentence];
+            document.getElementById('labOriginSentence').innerText = sentence;
+            document.getElementById('labAfterCut').innerText = d.after;
+            document.getElementById('labVerdict').innerText = d.verdict;
+
+            if (d.isMubtada) {
+                document.getElementById('labAfterCut').className = "text-2xl font-black text-emerald-700";
+                document.getElementById('labVerdict').className = "block text-xs font-bold text-emerald-800 mt-2 bg-emerald-50 py-1.5 px-3 rounded-lg border border-emerald-200 inline-block";
+            } else {
+                document.getElementById('labAfterCut').className = "text-2xl font-black text-rose-600";
+                document.getElementById('labVerdict').className = "block text-xs font-bold text-rose-800 mt-2 bg-rose-50 py-1.5 px-3 rounded-lg border border-rose-200 inline-block";
+            }
+        }
+
+        // ================== تصحيح اختبار الدرس الرابع ==================
+        function calculateScoreL4() {
+            let score = 0;
+            const answers = {
+                l4_q1: 'correct',
+                l4_q2: 'correct',
+                l4_q3: 'correct',
+                l4_q4: 'correct',
+                l4_q5: 'correct',
+                l4_q6: 'correct'
+            };
+
+            for (let q in answers) {
+                const selected = document.querySelector(`input[name="${q}"]:checked`);
+                if (selected && selected.value === answers[q]) score++;
+            }
+
+            const res = document.getElementById('resultL4');
+            res.classList.remove('hidden');
+            res.innerHTML = `نتيجتك في اختبار الدرس الرابع: ${score} من 6 درجات`;
+
+            if (score === 6) {
+                playTone('win');
+                res.className = "mt-6 text-center font-bold text-sm p-5 rounded-2xl bg-emerald-100 text-emerald-900 border border-emerald-300";
+                res.innerHTML += '<br>🎉 امتياز مع مرتبة الشرف! أتقنت التمييز بين الأفعال المتعدية لمفعولين بدقة متناهية.';
+            } else if (score >= 4) {
+                playTone('correct');
+                res.className = "mt-6 text-center font-bold text-sm p-5 rounded-2xl bg-amber-100 text-amber-900 border border-amber-300";
+                res.innerHTML += '<br>👍 جيد جداً! اجتزت الاختبار ولكن انتبه للتفريق بين رأى القلبية والبصرية.';
+            } else {
+                playTone('wrong');
+                res.className = "mt-6 text-center font-bold text-sm p-5 rounded-2xl bg-rose-100 text-rose-900 border border-rose-300";
+                res.innerHTML += '<br>💡 دون الحد المطلوب؛ يُنصح بمراجعة جداول الأفعال وحل التدريبات ثانية.';
+            }
+        }
+    </script>
+</body>
+</html>
